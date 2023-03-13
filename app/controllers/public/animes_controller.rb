@@ -26,6 +26,7 @@ class Public::AnimesController < ApplicationController
     @newanime =Anime.new
     @anime =Anime.find(params[:id])
     @customer = @anime.customer
+    @animes = @customer.animes
   end
   
   def edit
@@ -63,6 +64,7 @@ class Public::AnimesController < ApplicationController
   end
 
 end
+
 
 
 
