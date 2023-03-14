@@ -2,33 +2,28 @@ class Public::AnimesController < ApplicationController
   def new
     @anime = Anime.new
   end
-  
+
   def create
     @anime = Anime.new(anime_params)
-    @anime.customer_id = current_customer.id
-    if @anime.save
-      flash[:notice]="You have creatad anime successfully."
-      redirect_to anime_path(@anime.id)
-    else
-      @customer = current_customer
-      @animes = Anime.all
-      render :new
-    end
+    @anime.Customer_id = current_customer.id
+    @anime.save
+    redirect_to animes_path
+
   end
-  
+
   def index
   @customer = current_customer
   @anime = Anime.new
   @animes = Anime.all
   end
-  
+
   def show
     @newanime =Anime.new
     @anime =Anime.find(params[:id])
     @customer = @anime.customer
     @animes = @customer.animes
   end
-  
+
   def edit
    @anime = Anime.find(params[:id])
    if @anime.customer == current_customer
@@ -37,7 +32,7 @@ class Public::AnimesController < ApplicationController
     redirect_to animes_path
    end
   end
-  
+
   def update
     @anime =Anime.find(params[:id])
     @anime.customer_id = current_customer.id
@@ -48,7 +43,7 @@ class Public::AnimesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @anime = Anime.find(params[:id])
     if @anime.destroy
@@ -56,9 +51,9 @@ class Public::AnimesController < ApplicationController
       redirect_to animes_path
     end
   end
-  
+
   private
-  
+
   def anime_params
     params.require(:anime).permit(:title, :body)
   end

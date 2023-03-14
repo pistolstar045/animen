@@ -5,7 +5,7 @@ Rails.application.routes.draw do
    sessions: 'public/sessions'
   }
 
- devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+ devise_for :admin, skip: [:passwords] ,controllers: {
   sessions: "admin/sessions"
  }
 
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
 
     resources :sessions, only: [:new, :create, :destroy]
+    resources :customers
   end
 
  #会員
@@ -25,13 +26,14 @@ Rails.application.routes.draw do
   patch 'customers/information' => 'customers#update', as: 'update_customer'
   get "customers/unsubscribe" => "customers#unsubscribe", as:"unsubscribe"
   patch "customers/withdraw" => "customers#withdraw", as:"withdraw"
-  
+
   resources :animes
 
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
 
 
 

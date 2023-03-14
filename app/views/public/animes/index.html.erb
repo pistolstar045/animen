@@ -1,1 +1,36 @@
-アニメ一覧
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    
+    <div class="col-md-3">
+     
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <table class="table anime-index">
+        <h2>Animes</h2>
+        <thead>
+          <th>ユーザー</th>
+          <th>タイトル</th>
+          <th>感想</th>
+        </thead>
+        <tbody>
+          <% @animes.each do |anime| %>
+            <tr>
+              <td>
+                <%= link_to customer_my_page_path(anime.customer) do %>
+                  <% if @customer.profile_image.attached? %>
+                   <%= image_tag @customer.profile_image, size: "80x80" %>
+                  <% else %>
+                   <%= image_tag 'no_image.jpg', size: "80x80" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= link_to anime.title, anime_path(anime.id) %></td>
+              <td><%= anime.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
