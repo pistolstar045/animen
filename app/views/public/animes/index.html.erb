@@ -11,6 +11,7 @@
           <th>ユーザー</th>
           <th>タイトル</th>
           <th>感想</th>
+          <th></th>
         </thead>
         <tbody>
           <% @animes.each do |anime| %>
@@ -26,11 +27,13 @@
               </td>
               <td><%= link_to anime.title, anime_path(anime.id) %></td>
               <td><%= anime.body %></td>
+              <td><%= render "anime_comments/counter", anime: anime %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+  
   
 

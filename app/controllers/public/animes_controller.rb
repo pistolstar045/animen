@@ -5,7 +5,7 @@ class Public::AnimesController < ApplicationController
 
   def create
     @anime = Anime.new(anime_params)
-    @anime.Customer_id = current_customer.id
+    @anime.customer_id = current_customer.id
     @anime.save
     redirect_to animes_path
 
@@ -22,6 +22,7 @@ class Public::AnimesController < ApplicationController
     @anime =Anime.find(params[:id])
     @customer = @anime.customer
     @animes = @customer.animes
+    @anime_comment = AnimeComment.new
   end
 
   def edit
@@ -59,6 +60,7 @@ class Public::AnimesController < ApplicationController
   end
 
 end
+
 
 
 

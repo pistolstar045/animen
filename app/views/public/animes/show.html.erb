@@ -17,12 +17,19 @@
           </td>
           <td><%= link_to @anime.title %></td>
           <td><%= @anime.body %></td>
+          <td></td>
           <% if @anime.customer_id == current_customer.id %>
             <td><%= link_to "Edit", edit_anime_path(@anime), class:"btn btn-sm btn-success"%></td>
             <td><%= link_to "Destroy", anime_path(@anime), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
           <% end %>
         </tr>
       </table>
+      <div class="anime-comments/index">
+      <%= render "anime_comments/index", anime: @anime %>
+      </div>
+      <%= render "anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
+    </div>
     </div>
   </div>
+  
   

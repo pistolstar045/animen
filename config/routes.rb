@@ -27,12 +27,18 @@ Rails.application.routes.draw do
   get "customers/unsubscribe" => "customers#unsubscribe", as:"unsubscribe"
   patch "customers/withdraw" => "customers#withdraw", as:"withdraw"
 
-  resources :animes
+  resources :animes do
+   resource :favorites, only: [:create, :destroy]
+   resources :anime_comments, only: [:create, :destroy]
+  end
 
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+
 
 
 
