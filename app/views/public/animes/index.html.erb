@@ -27,13 +27,14 @@
               </td>
               <td><%= link_to anime.title, anime_path(anime.id) %></td>
               <td><%= anime.body %></td>
-              <td><%= render "anime_comments/counter", anime: anime %></td>
+              <td><%= render "anime_comments/counter", anime: @anime %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+  
   
   
 

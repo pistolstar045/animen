@@ -1,4 +1,5 @@
 <h2>アニメ新規投稿</h2>
+<%= render "layouts/errors", obj: @anime %>
 <%= form_with model: @anime do |f| %>
   <div class="form-group">
     <div class="title"><%= f.label :"タイトル" %></div>

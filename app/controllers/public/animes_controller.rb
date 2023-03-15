@@ -5,9 +5,11 @@ class Public::AnimesController < ApplicationController
 
   def create
     @anime = Anime.new(anime_params)
-    @anime.customer_id = current_customer.id
-    @anime.save
-    redirect_to animes_path
+  if @anime.save
+    redirect_to animes_path(@anime.id)
+  else
+    render :new
+  end
 
   end
 
@@ -60,6 +62,7 @@ class Public::AnimesController < ApplicationController
   end
 
 end
+
 
 
 
