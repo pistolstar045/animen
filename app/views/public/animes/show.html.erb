@@ -1,35 +1,21 @@
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md-3">
-      
-    </div>
-    <div class="col-md-8 offset-md-1">
       <h2>アニメ投稿詳細</h2>
       <table class="table table-customer-show">
         <tr>
-          <td><% if @customer.profile_image.attached? %>
-               <%= image_tag @customer.profile_image, size: "80x80" %>
-              <% else %>
-               <%= image_tag 'no_image.jpg', size: "80x80" %>
-              <% end %><br>
-              <%= link_to @customer.name, customer_my_page_path(@customer) %>
-          </td>
+
           <td><%= link_to @anime.title %></td>
           <td><%= @anime.body %></td>
           <td></td>
-          <% if @anime.customer_id == current_customer.id %>
+          <% if @anime.customer == current_customer %>
             <td><%= link_to "Edit", edit_anime_path(@anime), class:"btn btn-sm btn-success"%></td>
             <td><%= link_to "Destroy", anime_path(@anime), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
           <% end %>
         </tr>
       </table>
-      <div class="anime-comments/index">
-      <%= render "anime_comments/index", anime: @anime %>
+      <div class="anime_comments/index">
+      <%= render "public/anime_comments/index", anime: @anime, anime_comment: @anime_comment %>
       </div>
-      <%= render "anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
+      <%= render "public/anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
     </div>
     </div>
   </div>
-  
-  
+

@@ -1,12 +1,12 @@
 <div>
-  <% @anime.anime_comments.each do |anime_comment| %>
+  <% anime.anime_comments.each do |anime_comment| %>
     <p><%= image_tag anime_comment.customer.get_profile_image(80,80) %></p>
     <%= anime_comment.customer.name %>
     <%= anime_comment.created_at.strftime('%Y/%m/%d') %><%= anime_comment.comment %>
   <% end %>
 </div>
 
- <% if anime_comment.customer == current_customer %>
+ <% if anime_comment.customer_id == current_customer.id %>
       <%= link_to "削除", anime_anime_comment_path(anime_comment.anime, anime_comment), method: :delete %>
  <% end %>
  

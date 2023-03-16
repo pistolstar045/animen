@@ -23,7 +23,7 @@ class Public::AnimesController < ApplicationController
     @newanime =Anime.new
     @anime =Anime.find(params[:id])
     @customer = @anime.customer
-    @animes = @customer.animes
+    
     @anime_comment = AnimeComment.new
   end
 

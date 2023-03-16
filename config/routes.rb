@@ -31,11 +31,17 @@ Rails.application.routes.draw do
    resource :favorites, only: [:create, :destroy]
    resources :anime_comments, only: [:create, :destroy]
   end
-
+  
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+   resource :group_customers, only: [:create, :destroy]
+   resources :event_notices, only: [:new, :create]
+   get "event_notices" => "event_notices#sent"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ end
 end
+
 
 
 

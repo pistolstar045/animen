@@ -1,6 +1,6 @@
 class Anime < ApplicationRecord
   has_one_attached :image
-  belongs_to :customer
+  belongs_to :customer, optional: true
   has_many :anime_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
@@ -12,7 +12,7 @@ class Anime < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image
+    image.variant(resize_to_limit: [width, height]).processed
   end
   
   def favorited_by?(customer)
@@ -20,6 +20,9 @@ class Anime < ApplicationRecord
   end
 
 end
+
+
+
 
 
 
