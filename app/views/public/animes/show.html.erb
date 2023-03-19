@@ -1,8 +1,14 @@
       <h2>アニメ投稿詳細</h2>
       <table class="table table-customer-show">
+       <thead>
+        <th>投稿画像</th>
+        <th>タイトル</th>
+        <th>感想</th>
+       </thead>
+       <tbody>
         <tr>
-
-          <td><%= link_to @anime.title %></td>
+          <td><%= @anime.image %></td>
+          <td><%= @anime.title %></td>
           <td><%= @anime.body %></td>
           <td></td>
           <% if @anime.customer == current_customer %>
@@ -10,6 +16,7 @@
             <td><%= link_to "Destroy", anime_path(@anime), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
           <% end %>
         </tr>
+       </tbody>
       </table>
       <div class="anime_comments/index">
       <%= render "public/anime_comments/index", anime: @anime, anime_comment: @anime_comment %>
@@ -18,4 +25,6 @@
     </div>
     </div>
   </div>
+  
+  
 

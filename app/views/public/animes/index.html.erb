@@ -3,6 +3,7 @@
 <table class="table anime-index">
  <thead>
   <th>ユーザー</th>
+  <th>投稿画像</th>
   <th>タイトル</th>
   <th>感想</th>
   <th></th>
@@ -19,6 +20,7 @@
      <% end %>
   <% end %>
     </td>
+    <td><%= anime.image %></td>
     <td><%= link_to anime.title, anime_path(anime.id) %></td>
     <td><%= anime.body %></td>
     <td>コメント件数：<%= @anime.anime_comments.count %></td>
@@ -26,6 +28,7 @@
  <% end %>
  </tbody>
 </table>
+
 
 
 

@@ -5,6 +5,11 @@
      
      <%= form_with model: @anime do |f| %>
   <div class="form-group">
+   <div class="image"><%= f.label :"画像" %></div>
+    <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+  </div>   
+     
+  <div class="form-group">
     <div class="title"><%= f.label :"タイトル" %></div>
     <%= f.text_field :title, class: "form-control" %>
   </div>
@@ -26,4 +31,5 @@
   <div class="col-xs-3"></div>
  </div>
  </div>
+ 
  
