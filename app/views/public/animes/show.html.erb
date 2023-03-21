@@ -4,12 +4,16 @@
         <th>投稿画像</th>
         <th>タイトル</th>
         <th>感想</th>
+        <th>いいね数</th>
+        <th>コメント数</th>
        </thead>
        <tbody>
         <tr>
-          <td><%= @anime.image %></td>
+          <td><%= @anime.image%></td>
           <td><%= @anime.title %></td>
           <td><%= @anime.body %></td>
+          <td><%= render "public/favorites/btn", anime: @anime %></td>
+          <td><%= @anime.anime_comments.count %></td>
           <td></td>
           <% if @anime.customer == current_customer %>
             <td><%= link_to "Edit", edit_anime_path(@anime), class:"btn btn-sm btn-success"%></td>
@@ -18,8 +22,8 @@
         </tr>
        </tbody>
       </table>
-      <div class="anime_comments/index">
-      <%= render "public/anime_comments/index", anime: @anime, anime_comment: @anime_comment %>
+      <div class="anime-comments-index">
+      <%= render "public/anime_comments/index", anime: @anime %>
       </div>
       <%= render "public/anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
     </div>

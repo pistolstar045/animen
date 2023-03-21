@@ -2,10 +2,10 @@
  <table class='table table-hover table-inverse'>
   <thead>
    <tr>
-    <th>Image</th>
-    <th>Name</th>
-    <th>Introduction</th>
-    <th>Members</th>
+    <th></th>
+    <th>グループ名</th>
+    <th>紹介文</th>
+    <th></th>
     <th colspan="3"></th>
    </tr>
   </thead>
@@ -14,17 +14,13 @@
    <td><%= @group.name %></td>
    <td><%= @group.introduction %></td>
    <td>
-    <% @group.customers.each do |customer| %>
-     <li style="list-style: none;"><%= customer.name %></li>
-    <% end %>
+    
    </td>
    <% if @group.is_owned_by?(current_customer) %>
    <td>
      <%= link_to 'グループの編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
    </td>
-   <td>
-    <%= link_to 'Notice an Event', new_group_event_notice_path(@group), class: "btn btn-sm btn-info" %>
-   </td>
+   
     <% else %>
      <td>
       <% if @group.includesCustomer?(current_customer)%>

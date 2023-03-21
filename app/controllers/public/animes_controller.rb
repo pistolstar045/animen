@@ -5,10 +5,14 @@ class Public::AnimesController < ApplicationController
 
   def create
     @anime = Anime.new(anime_params)
+    @book.customer_id = current_customer.id
   if @anime.save
-    redirect_to animes_path(@anime.id)
+    flash[:notice]="アニメの投稿を完了しました！"
+    redirect_to anime_path(@anime.id)
   else
-    render :new
+     @customer = current_customer
+     @animes = Anime.all
+     render :index
   end
 
   end
@@ -58,10 +62,12 @@ class Public::AnimesController < ApplicationController
   private
 
   def anime_params
-    params.require(:anime).permit(:title, :body)
+    params.require(:anime).permit(:title, :body, :image)
   end
 
 end
+
+
 
 
 

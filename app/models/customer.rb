@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
    has_many :animes, dependent: :destroy
    has_many :anime_comments, dependent: :destroy
    has_many :favorites, dependent: :destroy
+   has_many :group_customers, dependent: :destroy
 
    def get_profile_image
     unless profile_image.attached?
@@ -18,6 +19,7 @@ class Customer < ApplicationRecord
    end
 
 end
+
 
 
 

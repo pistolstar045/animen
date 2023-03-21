@@ -6,7 +6,8 @@
   <th>投稿画像</th>
   <th>タイトル</th>
   <th>感想</th>
-  <th></th>
+  <th>いいね数</th>
+  <th>コメント数</th>
  </thead>
  <tbody>
   <% @animes.each do |anime| %>
@@ -23,7 +24,11 @@
     <td><%= anime.image %></td>
     <td><%= link_to anime.title, anime_path(anime.id) %></td>
     <td><%= anime.body %></td>
-    <td>コメント件数：<%= @anime.anime_comments.count %></td>
+    <td>
+     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+     <%= anime.favorites.count %>
+    </td>
+    <td><%= @anime.anime_comments.count %></td>
   </tr>
  <% end %>
  </tbody>

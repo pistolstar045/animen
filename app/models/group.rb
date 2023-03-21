@@ -8,10 +8,16 @@ class Group < ApplicationRecord
 
  def get_image
     (image.attached?) ? image : 'no_image.jpg'
-  end
+ end
 
   def is_owned_by?(customer)
     owner.id == customer.id
   end
+  
+   def includesCustomer?(customer)
+    group_customers.exists?(customer_id: customer.id)
+   end
 end
+
+
 
