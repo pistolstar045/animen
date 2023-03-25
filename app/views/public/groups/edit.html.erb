@@ -1,9 +1,6 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3>グループ編集画面</h3>
-        <%= render 'layouts/errors', obj: @group %>
-        <%= form_with model: @group, local: true do |f| %>
+<h3>グループ編集画面</h3>
+  <%= render 'layouts/errors', obj: @group %>
+  <%= form_with model: @group, local: true do |f| %>
   <div class="form-group">
     <%= f.label :グループ名 %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -23,6 +20,5 @@
     <%= f.submit "更新する", class: 'btn btn-info' %>
   </div>
 <% end %> 
-    </div>    
-  </div>
-</div> 
+
+    

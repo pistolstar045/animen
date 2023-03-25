@@ -5,9 +5,7 @@ class Public::AnimesController < ApplicationController
 
   def create
     @anime = Anime.new(anime_params)
-    @book.customer_id = current_customer.id
   if @anime.save
-    flash[:notice]="アニメの投稿を完了しました！"
     redirect_to anime_path(@anime.id)
   else
      @customer = current_customer
@@ -18,16 +16,16 @@ class Public::AnimesController < ApplicationController
   end
 
   def index
-  @customer = current_customer
-  @anime = Anime.new
-  @animes = Anime.all
+   @customer = current_customer
+   @anime = Anime.new
+   @animes = Anime.all
+   @animes = Anime.page(params[:page])
   end
 
   def show
     @newanime =Anime.new
     @anime =Anime.find(params[:id])
     @customer = @anime.customer
-    
     @anime_comment = AnimeComment.new
   end
 
@@ -44,10 +42,10 @@ class Public::AnimesController < ApplicationController
     @anime =Anime.find(params[:id])
     @anime.customer_id = current_customer.id
     if @anime.update(anime_params)
-      flash[:notice]="Anime was successfully updated."
-      redirect_to anime_path(@anime.id)
+     flash[:notice]="Anime was successfully updated."
+     redirect_to anime_path(@anime.id)
     else
-      render :edit
+     render :edit
     end
   end
 
@@ -66,6 +64,8 @@ class Public::AnimesController < ApplicationController
   end
 
 end
+
+
 
 
 

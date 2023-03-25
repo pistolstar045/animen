@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
  #会員
  scope module: :public do
+  get 'customers/index' => 'customers#index', as:'customers'
   get "customers/show" => "customers#show", as:"customers_my_page"
   get 'customers/information/edit' => 'customers#edit', as: 'edit_customer'
   patch 'customers/information' => 'customers#update', as: 'update_customer'
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
    resource :favorites, only: [:create, :destroy]
    resources :anime_comments, only: [:create, :destroy]
   end
-  
+
   resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
    resource :group_customers, only: [:create, :destroy]
    resources :event_notices, only: [:new, :create]
@@ -41,6 +42,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  end
 end
+
+
+
 
 
 

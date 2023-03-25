@@ -1,13 +1,18 @@
 class Anime < ApplicationRecord
-  has_one_attached :image
   belongs_to :customer, optional: true
   has_many :anime_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one_attached :image
+  
   
   validates :title, presence: true
   validates :body, presence: true
   
-  def get_image
+  def favorited_by?(customer)
+    favorites.where(customer_id: customer.id).exists?
+  end
+  
+   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
@@ -15,16 +20,7 @@ class Anime < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
   
-  def favorited_by?(customer)
-    favorites.exists?(customer_id: customer.id)
-  end
-
 end
-
-
-
-
-
 
 
 

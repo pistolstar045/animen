@@ -62,14 +62,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
  
  def after_sign_up_path_for(resource)
-    animes_path
-  end
+    customers_my_page_path
+ end
  
  protected
  
  
 
 end
+
 
 
 

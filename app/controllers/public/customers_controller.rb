@@ -1,5 +1,9 @@
 class Public::CustomersController < ApplicationController
-  
+
+  def index
+    @customers = Customer.all
+  end
+
   def show
     @customer = Customer.find(current_customer.id)
   end
@@ -7,7 +11,7 @@ class Public::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(current_customer.id)
   end
-  
+
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
@@ -17,10 +21,10 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
   end
-  
+
   def unsubscribe
-  end 
-  
+  end
+
   def withdraw
     @customer = Customer.find(current_customer.id)
     @customer.update(is_customer_deleted: true)
@@ -28,17 +32,18 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会処理を実行しました"
     redirect_to root_path
   end
-  
+
   private
     def customer_params
       params.require(:customer).permit(:name, :profile_image, :introduction)
     end
-    
+
     def ensure_current_customer
       if !customer_signed_in?
       redirect_to root_path
-      end 
-    end 
+      end
+    end
 end
+
 
 

@@ -1,6 +1,6 @@
 <h2>アニメ新規投稿</h2>
-<%= render "layouts/errors", obj: @anime %>
-<%= form_with model: @anime, local:true do |f| %>
+ <%= render "layouts/errors", obj: @anime %>
+ <%= form_with model: @anime, local:true do |f| %>
   <div class="form-group">
    <div class="image"><%= f.label :"画像" %></div>
     <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
@@ -20,4 +20,8 @@
     <%= f.submit '投稿', class: "btn  btn-success col-xs-12" %>
   </div>
 <% end %>
+
+<p>
+ <%= link_to '投稿一覧', animes_path, class: "btn btn-warning"  %>　へ
+</p>
 
