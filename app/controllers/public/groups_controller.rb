@@ -10,6 +10,7 @@ class Public::GroupsController < ApplicationController
   def index
     @anime = Anime.new
     @groups = Group.all
+    @groups = Group.page(params[:page])
   end
 
   def show
