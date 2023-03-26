@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
-  
-  before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit, :update]
+
+  #before_action :authenticate_customer!
+  #before_action :ensure_correct_customer, only: [:edit, :update]
 
   def new
     @group = Group.new
@@ -16,7 +16,7 @@ class Public::GroupsController < ApplicationController
     @anime = Anime.new
     @group = Group.find(params[:id])
   end
-  
+
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_customer.id
@@ -29,6 +29,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def edit
+     @group = Group.new
   end
 
   def update
@@ -51,6 +52,6 @@ class Public::GroupsController < ApplicationController
       redirect_to groups_path
     end
   end
-  
+
 end
 

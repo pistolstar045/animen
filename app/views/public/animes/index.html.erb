@@ -1,7 +1,6 @@
 <h2>アニメ投稿一覧</h2>
  <table class="table anime-index">
   <thead>
-   <th>ユーザー</th>
    <th>投稿画像</th>
    <th>タイトル</th>
    <th>いいね数</th>
@@ -11,28 +10,18 @@
    <% @animes.each do |anime| %>
     <tr>
      <td>
-      <%= link_to customers_my_page_path(anime.customer) do %>
-       <% if @customer.profile_image.attached? %>
-        <%= image_tag @customer.profile_image, size: "80x80" %>
-       <% else %>
-        <%= image_tag 'no_image.jpg', size: "80x80" %>
-       <% end %>
-      <% end %>
-     </td>
-     <td>
-      <% if @anime.image.attached? %>
-       <%= image_tag @anime.image, size: "80x80" %>
+      <% if anime.image.attached? %>
+       <%= image_tag anime.image, size: "80x80" %>
       <% else %>
        <%= image_tag 'no_image.jpg', size: "80x80" %>
       <% end %>
      </td>
-     <td><%= link_to anime.title, anime_path(anime.id) %>
-     </td>
+     <td><%= link_to anime.title, anime_path(anime.id) %></td>
      <td>
       <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @anime.favorites.count %>
+      <%= anime.favorites.count %>
     </td>
-    <td><%= @anime.anime_comments.count %></td>
+    <td><%= anime.anime_comments.count %></td>
    </tr>
   <% end %>
  </tbody>
