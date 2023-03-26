@@ -28,14 +28,15 @@
   </tr>
  </tbody>
 </table>
+<h3>コメント欄</h3>
 <div class="anime-comments-index">
  <%= render "public/anime_comments/index", anime: @anime %>
 </div>
-<%= render "layouts/errors", obj: @anime %>
 <%= render "public/anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
 <p>
   <%= link_to '投稿一覧', animes_path, class: "btn btn-warning"  %>へ戻る
 </p>
+
 
 
 
