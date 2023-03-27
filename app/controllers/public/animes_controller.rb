@@ -9,8 +9,8 @@ class Public::AnimesController < ApplicationController
     redirect_to anime_path(@anime.id)
   else
      @customer = current_customer
-     @animes = Anime.all
-     render :index
+     @animes = Anime.page(params[:page])
+     render :new
   end
 
   end
@@ -18,7 +18,7 @@ class Public::AnimesController < ApplicationController
   def index
    @customer = current_customer
    @anime = Anime.new
-   @animes = Anime.all
+
    @animes = Anime.page(params[:page])
   end
 
@@ -64,6 +64,7 @@ class Public::AnimesController < ApplicationController
   end
 
 end
+
 
 
 
